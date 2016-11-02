@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>中国主要城市平均收入</title>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="framework/normalize-css/normalize.css">
+    <link rel="stylesheet" href="framework/ol3/ol.css">
+    <!-- endinject -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- endinject -->
+</head>
+
+<body>
+    <!-- container -->
+    <div class="container">
+        <h2 class="tcenter">中国主要城市平均月收入概况</h2>
+        <p class="top-nav" id="topNav">
+            <label>
+                <input type="checkbox" class="sortCkBtn">月收入排序</label>
+        </p>
+        <!-- front content -->
+        <div class="flip-container" id="flipContainer" ontouchstart="this.classList.toggle('hover');">
+            <div class="flipper">
+                <div class="front">
+                </div>
+                <div class="back">
+                    <div id="chinaMap" class="map"></div>
+                </div>
+            </div>
+        </div>
+        <!--//front content -->
+        <!-- bottom-nav -->
+        <p class="bottom-nav">
+            <label>
+                <input type="radio" name="cityRadio" value="0" onchange="ol3Map.cityRadioChange(this.value);" checked="checked">柱状图</label>
+            <label>
+                <input type="radio" name="cityRadio" value="1" onchange="ol3Map.cityRadioChange(this.value);">热点地图</label>
+        </p>
+        <!--// bottom-nav -->
+    </div>
+    <!--// container -->
+    <!-- bower:js -->
+    <script src="framework/d3/d3.js"></script>
+    <script src="framework/ol3/ol.js"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="js/app.js"></script>
+    <!-- endinject -->
+    <script>        
+        //调用d3Chart对象
+        d3Chart.init({
+            "obj":".front",
+            "top": 20,
+            "right": 20,
+            "bottom": 30,
+            "left": 40,
+            "width": 1280,
+            "height": 500,
+            "url":"./data/chinaIncome.xml",
+            "tiptxt": "月收入(元)"
+        }).chart(); 
+      //调用ol3Map热点地图对象
+      ol3Map.init({
+            "obj":"chinaMap",
+            "lon":108.95000,
+            "lat":34.26667,
+            "url":"./data/chinaIncome.xml",
+            "zoom": 4
+        }).vector();
+        //初始化当前切换
+        ol3Map.cityRadioChange(ol3Map.getRadioVal("cityRadio"));      
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "China city average income",
+  "description": "中国城市平均收入",
+  "main": "app/index.html",
+  "authors": [
+    "liulei<real_life@qq.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "China city average income"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "d3": "3.5.17",
+    "normalize-css": "^5.0.0",
+    "ol3": "ol3-bower#^3.18.2"
+  }
+}
